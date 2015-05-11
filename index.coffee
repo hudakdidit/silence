@@ -1,3 +1,12 @@
+#########################################################
+# Title:  Sitemap Scraper
+# Author: jonathan@wintr.us @ WINTR
+#########################################################
+
+#--------------------------------------------------------
+# Requirements
+#--------------------------------------------------------
+
 _         = require 'lodash'
 fs        = require 'fs'
 path      = require 'path'
@@ -7,15 +16,22 @@ request   = require 'request'
 mkdirp    = require 'mkdirp'
 inspect   = require('util').inspect
 
-c = ->
-  @domain  = 'http://craft.dev/'
-  @sitemap = "#{@.domain}sitemap.xml"
-  @build   = 'build'
 
-CONFIG = new c()
+#--------------------------------------------------------
+# Configuration
+#--------------------------------------------------------
+
+configuration = ->
+  @domain  = process.argv[2]
+  @sitemap = if process.argv[3]? then "#{@.domain}#{process.argv[3]}" else "#{@.domain}/sitemap.xml"
+  @build   = if process.argv[4]? then process.argv[4] else 'build'
+
+CONFIG = new configuration()
 
 
-SiteBuild =
+#--------------------------------------------------------
+
+Scraper =
   buildPath: path.join(__dirname, CONFIG.build)
   init: ->
     @clean()
@@ -52,4 +68,9 @@ SiteBuild =
             throw er if er
             console.log "#{destination}index.html saved!"
 
-SiteBuild.init()
+
+#--------------------------------------------------------
+# Start
+#--------------------------------------------------------
+
+Scraper.init()
