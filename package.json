@@ -13,10 +13,14 @@
   "author": "@wintr.us",
   "license": "ISC",
   "devDependencies": {
+    "jsonfile": "^2.0.0",
     "lodash": "^3.8.0",
+    "merge": "^1.2.0",
     "mkdirp": "^0.5.0",
+    "node-notifier": "^4.2.1",
     "request": "^2.55.0",
     "rimraf": "^2.3.3",
+    "touch": "0.0.3",
     "xml-parser": "^1.2.0"
   }
 }
