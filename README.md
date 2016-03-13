@@ -1,4 +1,4 @@
-# Website Sitemap Scraper
+# Sitemap Scraper
 
 A script to scrape a site's html from its sitemap, and build a static version with directory indexes.
 We assume the website's protocol and hostname are the same as listed in its sitemap.
